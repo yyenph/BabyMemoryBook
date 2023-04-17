@@ -1,0 +1,6 @@
+.venv
+MMEMORYBOOk/__pycache__
+media
+MEMORYBOOk/.env
+book_app/__pycache__
+book_app/migrations

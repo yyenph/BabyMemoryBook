@@ -5,6 +5,7 @@ from django.core.serializers import serialize
 import json
 from django.shortcuts import redirect
 
+# Function for user signup/log in
 def sign_up(data):
     email=data['email']
     name=data['name']
@@ -17,19 +18,25 @@ def sign_up(data):
         print(e)
         return JsonResponse({'success':False})
 
-def log_in(data):
-    username=data['email']
-    password=data['password']
-    user=authenticate(username=data['email'],password=data['password'])
+def log_in(request):
+    username=request.data['email']
+    password=request.data['password']
+    user=authenticate(request,username=username,password=password)
+    
     if user is not None:
         try:
-            login(username,password)
+            login(request._request,user)
             return JsonResponse({'Login':True})
      # change to redirect('/account/') later
         except Exception as e:
-            print (e)
+            print ('error',e)
             return JsonResponse({'Login':False})
     return JsonResponse({'Login':False})
 
-def log_out():
+# for creating new child and album
+
+
+
+
+def add_entry(request):
     return()
