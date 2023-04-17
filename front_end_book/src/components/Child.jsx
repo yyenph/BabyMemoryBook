@@ -1,4 +1,4 @@
-export default function Album(){
+export default function Child(){
     return (
         <div></div>
     )

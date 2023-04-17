@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/static/',
   build: {
-    outDir: '../static',
+    outDir: '../MEMORYBOOK/static/',
     emptyOutDir: true,
-    ourcemap: true,
+    sourcemap: true,
   },
   plugins: [react()]
 })
