@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.serializers import serialize
 import json
 from django.shortcuts import redirect
+from django.contrib import messages
 
 # Function for user signup/log in
 def sign_up(data):
@@ -19,24 +20,26 @@ def sign_up(data):
         return JsonResponse({'success':False})
 
 def log_in(request):
-    username=request.data['email']
+    email=request.data['email']
     password=request.data['password']
-    user=authenticate(request,username=username,password=password)
-    
+    user=authenticate(username=email,password=password)
+    print(email,password)
+    print('Received email:', email)
+    print('Received password:', password)
     if user is not None:
         try:
             login(request._request,user)
-            return JsonResponse({'Login':True})
-     # change to redirect('/account/') later
+            return JsonResponse({'email': user.email, 'name':user.name})
+            # return redirect('/')
         except Exception as e:
             print ('error',e)
-            return JsonResponse({'Login':False})
-    return JsonResponse({'Login':False})
-
-# for creating new child and album
-
-
+            messages.success(request,"Sign in unsuccesfully, please try again")
+            return JsonResponse({'login':False})
+            # return redirect('signin')
+    return messages.success(request,"Sign in unsuccesfully, please try again")
 
 
-def add_entry(request):
-    return()
+def curUser(request):
+    if request.user.is_authenticated:
+        print(request.user)
+        return (request.user)

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-export default function SignUp(){
-    const [name, setName] = useState("");
+export default function SignIn(){
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <form>
-            <input
-                placeholder="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
+        <form
+        id="signin-modal"
+        >
             <input
                 placeholder="email"
                 value={email}
@@ -21,8 +18,9 @@ export default function SignUp(){
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <input type="submit" value="signUp" />
-            <s></s>
+            <input type="submit" value="Sign In" />
+            <p>Create an Account</p>
+            <s>&times;</s>
         </form>
     )
 }

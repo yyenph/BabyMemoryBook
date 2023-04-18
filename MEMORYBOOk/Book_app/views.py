@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 
-from .utilities import sign_up, log_in
+from .utilities import sign_up, log_in,curUser
 from django.contrib.auth import authenticate, logout
 from .models import Child, Album    
 from rest_framework.decorators import api_view
 
 # Create your views here.
-@api_view(['POST','PUT'])
-def home(request):
+# def home(request):
+#     return()
+
+
+@api_view(['POST','PUT','GET'])
+def users(request):
     if request.method=='POST':
         if request.user.is_authenticated:
             try:
@@ -21,9 +25,15 @@ def home(request):
             return sign_up(request.data)
 
     elif request.method=='PUT':
-        print(request.user)
+        print(request)
         return log_in(request)
-# create new child
+    elif request.method=='GET':
+        print(request)
+        return curUser(request)
+    
+
+
+# Child related function
 def add_child(request):
     if request.method=='POST':
         print(request.POST)
@@ -47,7 +57,7 @@ def add_child(request):
             return JsonResponse({'Added child':False})
     return JsonResponse({'Added child':False})
 
-#create new album
+#Album related
 
 
 def create_album(request):

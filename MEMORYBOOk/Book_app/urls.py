@@ -3,7 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.home),
+    
+    path('users/',views.users),
+    # path('', send_the_index),
     # path('index/', views.send_the_index)
     # path('account/', views.account),
     # path('/account/<str:child_name>', views.child_profile),
@@ -12,3 +14,4 @@ urlpatterns = [
     path('create_album/', views.create_album),
     
 ]
+ 
