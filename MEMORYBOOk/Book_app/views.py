@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-
 from .utilities import sign_up, log_in,curUser
 from django.contrib.auth import authenticate, logout
-from .models import Child, Album    
+from .models import Child, Album,User    
 from rest_framework.decorators import api_view
 
 # Create your views here.
@@ -11,25 +10,45 @@ from rest_framework.decorators import api_view
 #     return()
 
 
-@api_view(['POST','PUT','GET'])
+@api_view(['POST', 'PUT', 'GET'])
 def users(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         if request.user.is_authenticated:
             try:
+                # Removes SessionID
                 logout(request)
-                return JsonResponse({'Logout':True})
+                return JsonResponse({"logout":True})
             except Exception as e:
                 print(e)
-                return JsonResponse({'Logout':False})
+                return JsonResponse({"logout":False})
         else:
             return sign_up(request.data)
 
-    elif request.method=='PUT':
-        print(request)
+        
+    elif request.method == 'PUT':
         return log_in(request)
-    elif request.method=='GET':
-        print(request)
+    
+    elif request.method == 'GET':
         return curUser(request)
+# @api_view(['POST','PUT','GET'])
+# def users(request):
+#     if request.method=='POST':
+#         if request.user.is_authenticated:
+#             try:
+#                 logout(request)
+#                 return JsonResponse({'Logout':True})
+#             except Exception as e:
+#                 print(e)
+#                 return JsonResponse({'Logout':False})
+#         else:
+#             return sign_up(request.data)
+
+#     elif request.method=='PUT':
+#         print(request)
+#         return log_in(request)
+#     elif request.method=='GET':
+#         print(request)
+#         return curUser(request)
     
 
 

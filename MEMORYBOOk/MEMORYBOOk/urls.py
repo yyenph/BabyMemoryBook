@@ -11,12 +11,11 @@ def send_the_index(request):
     return HttpResponse(the_index)
 
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', send_the_index),
-    path('', include('book_app.urls'),name='home')
+    path('user/', include('book_app.urls'),name='home'),
+    
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
