@@ -6,7 +6,8 @@ import { currUser } from './utilities';
 import { getToken } from "./components/CsrfToken";
 import { logOut } from './utilities';
 
-export const UserContext=createContext()
+export const UserContext=createContext(null)
+
 function App() {
   const [user,setUser]=useState();
   getToken()
@@ -20,12 +21,9 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={()=>logOut(setUser)}>Log out</button>
-      {/* <p>Hello {user}</p> */}
-      <Navbar />
       
-
       <UserContext.Provider value={{user, setUser}} >
+        <Navbar />
         <Outlet />
       </UserContext.Provider>
     </div>

@@ -8,12 +8,10 @@ export default function SignIn(){
     
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {user} = useContext(UserContext)
+    
     const {setUser} = useContext(UserContext);
 
     return (
-        <UserContext.Consumer> 
-            { ({setUser})=>
             <form
             id="signin-modal"
             onSubmit={(e)=>{[
@@ -38,8 +36,7 @@ export default function SignIn(){
                 <Link to="signup/">Create an Account</Link>
             
                 <s>&times;</s>
-            </form>}
-        </UserContext.Consumer>
+            </form>
         
     )
 }

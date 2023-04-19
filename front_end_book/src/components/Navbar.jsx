@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../utilities';
 import SignIn from './SignIn';
-
+import { UserContext } from '../App';
 export default function Navbar(){
     const [searchKey,setSearchKey]=useState();
     const [isSignInVisible,setIsSignInVisible]=useState();
+    const {user} = useContext(UserContext)
+    const {setUser} = useContext(UserContext);
+
     const navigate = useNavigate();
 
     
@@ -24,6 +27,7 @@ export default function Navbar(){
         <Link to="/">Home</Link>
         <Link to="child/">Child</Link>
         <Link to="account/">Account</Link>
+        <button onClick={()=>logOut(setUser)}>Log out</button>
         <p onClick={toggleModal}
         id='SignIn'>Sign In or Create Account</p>
         {
