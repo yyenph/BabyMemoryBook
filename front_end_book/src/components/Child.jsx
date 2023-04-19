@@ -1,5 +1,5 @@
 export default function Child(){
     return (
-        <div></div>
+        <div>Hello</div>
     )
 }

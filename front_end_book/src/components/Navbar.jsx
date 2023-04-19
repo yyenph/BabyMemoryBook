@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { logOut } from '../utilities';
 import SignIn from './SignIn';
 
 export default function Navbar(){
@@ -28,7 +29,7 @@ export default function Navbar(){
         {
             isSignInVisible && <SignIn />
         }
-
+        
         <form onSubmit={seachHandler}>
                 <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="search" />
                 <button type='submit'>Search</button>

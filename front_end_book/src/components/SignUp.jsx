@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
+import { signUp } from "../utilities";
+
 export default function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <form>
+        <form onSubmit={(e)=>{[
+            e.preventDefault(),
+            signUp(name,email,password),
+            setName(''),
+            setEmail(''),
+            setPassword('')
+            ]
+        }}>
             <input
                 placeholder="name"
                 value={name}
