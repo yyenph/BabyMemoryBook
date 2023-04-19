@@ -21,10 +21,12 @@ def sign_up(data):
         # creates new user
         new_user = User.objects.create_user(username = email, email = email, name = name, password = password, is_superuser = super_user, is_staff = staff)
         new_user.save()
-        return JsonResponse({"success":True})
+        JsonResponse({"success":True})
+        return redirect('/')
     except Exception as e:
         print(e)
-        return JsonResponse({"success": False})
+        JsonResponse({"success": False})
+        return redirect('/')
     
 def log_in(request):
     email = request.data['email']

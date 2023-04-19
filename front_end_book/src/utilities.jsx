@@ -15,7 +15,7 @@ export const logIn = async(email, password, setUser) => {
         'email' : email,
         'password' : password
     })
-
+    window.location.reload()
     setUser(response.data)
 }
 

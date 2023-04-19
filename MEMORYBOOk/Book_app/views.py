@@ -30,26 +30,7 @@ def users(request):
     
     elif request.method == 'GET':
         return curUser(request)
-# @api_view(['POST','PUT','GET'])
-# def users(request):
-#     if request.method=='POST':
-#         if request.user.is_authenticated:
-#             try:
-#                 logout(request)
-#                 return JsonResponse({'Logout':True})
-#             except Exception as e:
-#                 print(e)
-#                 return JsonResponse({'Logout':False})
-#         else:
-#             return sign_up(request.data)
 
-#     elif request.method=='PUT':
-#         print(request)
-#         return log_in(request)
-#     elif request.method=='GET':
-#         print(request)
-#         return curUser(request)
-    
 
 
 # Child related function

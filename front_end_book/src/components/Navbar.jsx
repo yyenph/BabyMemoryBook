@@ -20,24 +20,30 @@ export default function Navbar(){
     const toggleModal =() =>{
         setIsSignInVisible(!isSignInVisible)
     }
-
+    console.log('user:', user);
     return(
     <nav className='navbar'>
         <h1>MemoryBook</h1>
-        <Link to="/">Home</Link>
-        <Link to="child/">Child</Link>
-        <Link to="account/">Account</Link>
-        <button onClick={()=>logOut(setUser)}>Log out</button>
-        <p onClick={toggleModal}
-        id='SignIn'>Sign In or Create Account</p>
-        {
-            isSignInVisible && <SignIn />
-        }
-        
-        <form onSubmit={seachHandler}>
+        {(user)? (
+            <>
+            <Link to="/">Home</Link>
+            <Link to="child/">Child</Link>
+            <Link to="account/">Account</Link>
+            <button onClick={()=>logOut(setUser)}>Log out</button>
+            <form onSubmit={seachHandler}>
                 <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="search" />
                 <button type='submit'>Search</button>
             </form>
+            </>
+        ): 
+        (<>
+            <p onClick={toggleModal} id='SignIn'>
+            Sign In or Create Account
+            </p>
+            {isSignInVisible && <SignIn />}
+        </>)
+        }
+       
     </nav>
     
     )

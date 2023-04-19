@@ -31,7 +31,7 @@ export default function SignUp(){
                 onChange={(e) => setPassword(e.target.value)}
             />
             <input type="submit" value="signUp" />
-            <s></s>
+    
         </form>
     )
 }

@@ -4,9 +4,8 @@ import './App.css'
 import { Outlet } from 'react-router-dom';
 import { currUser } from './utilities';
 import { getToken } from "./components/CsrfToken";
-import { logOut } from './utilities';
 
-export const UserContext=createContext(null)
+export const UserContext=createContext()
 
 function App() {
   const [user,setUser]=useState();
