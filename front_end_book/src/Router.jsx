@@ -3,11 +3,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Route } from 'react-router-dom';
+import {  Route } from "react-router-dom";
 // import { SignUp } from './components/SignUp';
 import Account from './components/Account';
-import Child from './components/Child';
+import Child from './views/Child/Child';
 import SignUp from './components/SignUp';
+import AddChild from './views/Child/AddChild';
 
 const router= createBrowserRouter([
   {
@@ -15,28 +16,39 @@ const router= createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "signup/",
+        path: "/signup/",
         element: <SignUp />,
       },
       
       {
-        path: "account/",
+        path: "/account/",
         element: <Account />,
       },
       {
-        path: "child/",
+        path: "/child/",
         element: <Child />,
+        children:[
+          {
+            path: "addchild/",
+            element: <AddChild />,
+          }
+        ]
       },
     ],
   },
 ]);
   
   // const router = createBrowserRouter(
-  //   createRoutesFromElements(
-  //     <Route path="/" element={<App />}>
-  //       <Route path="account/" element={<Account />} />
-  //       <Route path="child/:childname" element={<Child />} />
-  //     </Route>
-  //   )
+    
+  //     <Routes>
+  //       <Route path="/" element={<App />} >
+  //         <Route path="account/" element={<Account />} />
+  //         <Route path="child/" element={<Child />} >
+  //           <Route path="addchild/" element={<AddChild />} />
+  //         </Route>
+  //       </Route>
+  //     </Routes>
+      
+    
   // );
   export default router;

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// User Authenticate
 export const signUp = async(name, email, password) => {
     let response = await axios.post('/user/users/' , {
         'name': name,
@@ -21,7 +22,7 @@ export const logIn = async(email, password, setUser) => {
 
 export const currUser = async() =>{
     let response = await axios.get('/user/users/')
-    console.log(response.data)
+    console.log('currUser',response.data)
     return response.data
 }
 
@@ -30,4 +31,19 @@ export const logOut = async(setUser) => {
     if(response.data.logout){
         setUser(null)
     }
+}
+// Child related
+export const addChild = async(name, birthdate, gender,profile_photo,username) => {
+    const formData= new FormData();
+    formData.append('name', name);
+    formData.append('birthdate' , birthdate);
+    formData.append('gender' , gender);
+    formData.append('profile_photo' , profile_photo,);
+    formData.append('userID' , username)
+    let response = await axios.post('/child/' , formData, {
+        "Content-Type": "multipart/form-data"
+
+    })
+    console.log(response.data)
+    return response.data.success
 }

@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { currUser } from './utilities';
 import { getToken } from "./components/CsrfToken";
 
+
 export const UserContext=createContext()
 
 function App() {
