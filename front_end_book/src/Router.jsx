@@ -9,6 +9,9 @@ import Account from './components/Account';
 import Child from './views/Child/Child';
 import SignUp from './components/SignUp';
 import AddChild from './views/Child/AddChild';
+import { getChildList } from './utilities';
+import Albums from './views/Album/Albums';
+import AddAlbum from './views/Album/AddAlbum';
 
 const router= createBrowserRouter([
   {
@@ -19,21 +22,25 @@ const router= createBrowserRouter([
         path: "/signup/",
         element: <SignUp />,
       },
-      
-      {
-        path: "/account/",
-        element: <Account />,
-      },
       {
         path: "/child/",
         element: <Child />,
+        loader: getChildList,
         children:[
           {
             path: "addchild/",
             element: <AddChild />,
+          },
+          {
+            path: ":child_name/albums",
+            element: <Albums />,
           }
         ]
       },
+      {
+        path: "/:child_name/addAlbum/",
+        element: <AddAlbum />,
+      }
     ],
   },
 ]);

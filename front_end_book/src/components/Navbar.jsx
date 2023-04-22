@@ -23,16 +23,16 @@ export default function Navbar(){
     console.log('user:', user);
     return(
     <nav className='navbar'>
-        <h1>MemoryBook</h1>
-        {(user)? (
+        <h2>Memorybook</h2>
+        {user? (
             <>
-            <Link to="/">Home</Link>
-            <Link to="child/">Child</Link>
-            <Link to="account/">Account</Link>
-            <button onClick={()=>logOut(setUser)}>Log out</button>
+            <Link className='navbar-link' to="/">HOME</Link>
+            <Link className='navbar-link' to="child/">CHILD</Link>
+ 
+            <button className='button' onClick={()=>logOut(setUser)}>Log out</button>
             <form onSubmit={seachHandler}>
                 <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="search" />
-                <button type='submit'>Search</button>
+                <button className='button' type='submit'>Search</button>
             </form>
             </>
         ): 

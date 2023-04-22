@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import AddAlbum from './views/Album/AddAlbum';
 
 // User Authenticate
 export const signUp = async(name, email, password) => {
@@ -27,23 +29,31 @@ export const currUser = async() =>{
 }
 
 export const logOut = async(setUser) => {
-    let response = await axios.post('/user/users/')
+    let response = await axios.post('/user/users/',{ logout: true })
     if(response.data.logout){
         setUser(null)
     }
 }
-// Child related
+
+// Child related_---------------------------------------
 export const addChild = async(name, birthdate, gender,profile_photo,username) => {
     const formData= new FormData();
     formData.append('name', name);
     formData.append('birthdate' , birthdate);
     formData.append('gender' , gender);
     formData.append('profile_photo' , profile_photo,);
-    formData.append('userID' , username)
+    formData.append('username' , username)
     let response = await axios.post('/child/' , formData, {
         "Content-Type": "multipart/form-data"
 
     })
     console.log(response.data)
+    window.location.reload()
     return response.data.success
 }
+
+export const getChildList = async()=> {
+    let response= await axios.get('/child/')
+    return response.data.child_list
+}
+

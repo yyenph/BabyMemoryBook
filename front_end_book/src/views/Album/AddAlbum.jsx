@@ -1,19 +1,30 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 // const Child = getAllChild()
 
 export default function AddAlbum(){
     const [name, setName] = useState("");
-    const [child, setChild] = useState("");
+    const {child_name} =useParams();
+    const navigate=useNavigate()
+
+    const addAlbum = async (name,child_name)=>{
+        let response = await axios.post(`/child/${child_name}/albums/`, {
+            'name' : name,
+            'child_name' : child_name
+        })
+        console.log('addalbum.jsx',name,child_name)
+        
+    }
     
     return(
         
-        <form onSubmit={(e)=>{[
+        <form onSubmit={(e)=>{
             e.preventDefault(),
-            // addAlbum(name,child),
-            setAlbum(''),
-            setChild(''),
-            ]
+            addAlbum(name,child_name),
+            setName(''),
+            navigate(`/child/${child_name}/albums/`)
+            
         }}>
             <input
                 placeholder="name"
@@ -21,19 +32,6 @@ export default function AddAlbum(){
                 onChange={(e) => setName(e.target.value)}
             />
     
-            <div>
-                <Select 
-                    options={Child}
-                    value={child}
-                    onChange={(e) => setChild(e.target.value)} 
-                />
-            </div>
-            <div>
-                <input type="file"/>
-                <button>
-                  Save
-                </button>
-            </div>
             <input type="submit" value="Save Album" />
     
         </form>

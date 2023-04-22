@@ -10,8 +10,8 @@ def add_child(request):
         birthdate=request.POST['birthdate']
         gender=request.POST['gender']
         profile_photo = request.FILES.get('profile_photo', None)
-        userID=request.POST['userID']
-        user=User.objects.get(id=userID)
+        username=request.POST['username']
+        user=User.objects.get(name=username)
         try: 
             new_child=Child.objects.create(
                 name=name,
@@ -25,3 +25,6 @@ def add_child(request):
         except Exception as e:
             print(e)
             return JsonResponse({'Added child':False})
+
+
+          

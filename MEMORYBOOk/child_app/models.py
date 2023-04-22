@@ -15,3 +15,9 @@ class Child(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+class Album(models.Model):
+    name = models.CharField(max_length = 255, null = False, blank = False, unique = True)
+    child=models.ForeignKey(Child, on_delete=models.CASCADE, related_name='album')
+    def __str__(self):
+        return f"{self.name}"

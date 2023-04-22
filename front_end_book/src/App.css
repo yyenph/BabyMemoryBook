@@ -2,11 +2,41 @@
   display:flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   position: absolute;
   top:0px;
   width: 100%;
+  font-family: monospace;
+  height: 30px;
+  color:black
+}
+.navbar-link{
+  color:black;
+}
+.button{
+  border-radius: 0%;
+  background-color: none;
+}
+.navbar-link:hover,.button:hover{
+  border-radius: 0%;
+  background-color: rgb(238, 237, 235);
+  border-style: none;
+  padding: 10px;
+  color:black;
+}
+.child-display{
+  display: flex;
+
+  }
+.child-content{
+  padding: 30px;
+  text-align: center;
+  font-family: monospace;
 }
 
-#SignIn{
-  
+.profile-photo{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
 }

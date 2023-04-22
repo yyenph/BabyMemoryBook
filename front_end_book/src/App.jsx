@@ -10,7 +10,13 @@ export const UserContext=createContext()
 
 function App() {
   const [user,setUser]=useState();
-  getToken()
+  getToken();
+  const [childrenList,setChildrenList]=useState();
+  
+  // handler to add new child to childList when new child is created
+  const handleChildList = ()=>{
+    
+  }
 
   useEffect(()=> {
     const getCurrUser = async () => {
@@ -22,7 +28,7 @@ function App() {
   return (
     <div className="App">
       
-      <UserContext.Provider value={{user, setUser}} >
+      <UserContext.Provider value={{user, setUser,childrenList,setChildrenList}} >
         <Navbar />
         <Outlet />
       </UserContext.Provider>

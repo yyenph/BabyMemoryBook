@@ -5,7 +5,7 @@ export default function Account(){
     const {user}=useContext(UserContext)
     return (
         <div>
-            <p>Have a wonderful day {user.name} </p>
+            <p>Have a wonderful day {user.name} {user.id} </p>
             {/* < Child /> */}
         </div>
     )
