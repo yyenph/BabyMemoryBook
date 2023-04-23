@@ -31,11 +31,11 @@ const router= createBrowserRouter([
             path: "addchild/",
             element: <AddChild />,
           },
-          {
-            path: ":child_name/albums",
-            element: <Albums />,
-          }
         ]
+      },
+      {
+        path: ":child_name/albums",
+        element: <Albums />,
       },
       {
         path: "/:child_name/addAlbum/",

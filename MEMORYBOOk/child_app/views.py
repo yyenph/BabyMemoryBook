@@ -25,34 +25,37 @@ def child(request):
             print(e)
             return JsonResponse({'child_list': []})
        
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def album(request,child_name):
     if request.method=='GET':
         try:
+            
             child=Child.objects.get(name=child_name)
-            album_list=list(Album.objects.filter(child=child).values())
+            album_list=list(child.album.all())
             print(album_list)
             return JsonResponse({'album_list': album_list})
         except Exception as e:
             print(e)
             return JsonResponse({'album_list': []})
-    elif request.method=='POST':
+    
+@api_view(['POST'])
+def addAlbum(request,child_name): #this take from URL
+    if request.method=='POST':
         try:
-            print(request)
-            print(request.POST['name'],request.POST['child_name'])
-            name=request.POST['name']
-            child_name=request.POST['child_name']
+            name=request.data['name']
+            print(name,child_name)
+    
             child=Child.objects.get(name=child_name)
             newAlbum=Album.objects.create(
                 name=name,
                 child=child
             )
             newAlbum.save()
-            album_list=list(Album.objects.filter(child=child).values())
+            album_list=list(child.album.all())
             print(album_list)
-            return JsonResponse({'Success,newalbum_list': album_list})
+            return JsonResponse({'newalbum_list': album_list})
         except Exception as e:
             print(e)
-            return JsonResponse({'Fail,album_list': []})
+            return JsonResponse({'album_list': []})
         
  

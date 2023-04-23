@@ -8,10 +8,10 @@ export default function AddAlbum(){
     const {child_name} =useParams();
     const navigate=useNavigate()
 
-    const addAlbum = async (name,child_name)=>{
-        let response = await axios.post(`/child/${child_name}/albums/`, {
+    const addAlbum = async ()=>{
+        let response = await axios.post(`/child/${child_name}/albums/add/`, {
             'name' : name,
-            'child_name' : child_name
+            
         })
         console.log('addalbum.jsx',name,child_name)
         
@@ -19,9 +19,10 @@ export default function AddAlbum(){
     
     return(
         
-        <form onSubmit={(e)=>{
+        <form onSubmit={async (e)=>{
             e.preventDefault(),
-            addAlbum(name,child_name),
+            await addAlbum(name,child_name),
+            console.log(name,child_name)
             setName(''),
             navigate(`/child/${child_name}/albums/`)
             

@@ -13,26 +13,54 @@
 .navbar-link{
   color:black;
 }
-.button{
+.editchild-button,.button{
   border-radius: 0%;
   background-color: none;
+  padding: 10px;
 }
-.navbar-link:hover,.button:hover{
+.editchild-button:hover,.navbar-link:hover,.button:hover{
   border-radius: 0%;
   background-color: rgb(238, 237, 235);
   border-style: none;
   padding: 10px;
   color:black;
+  border:none ;
 }
-.child-display{
+.child-card{
   display: flex;
 
   }
-.child-content{
+.child-display{
   padding: 30px;
   text-align: center;
   font-family: monospace;
 }
+.add-child{
+  padding: 30px;
+  text-align: center;
+  font-family: monospace;
+  color: rgb(168, 168, 168)
+}
+.addChild-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border:solid rgb(168, 168, 168) 1px ;
+  font-family: monospace;
+  color:rgb(168, 168, 168);
+  text-align: center;
+
+}
+.addChild-button:hover{
+  background-color: rgb(168, 168, 168);
+  color: white;
+}
+
+
 
 .profile-photo{
   width: 200px;
