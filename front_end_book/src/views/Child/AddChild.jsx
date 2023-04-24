@@ -11,7 +11,7 @@ const Gender= [
 ]
 
 
-export default function AddChild2(){
+export default function AddChild(){
     const [name, setName] = useState("");
     const [birthdate, setBirthdate] = useState("");
     const [gender, setGender] = useState("");

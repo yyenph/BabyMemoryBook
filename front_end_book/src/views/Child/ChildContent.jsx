@@ -3,7 +3,7 @@ import { UserContext } from "../../App";
 import EditChild from "./EditChild";
 
 export default function ChildContent({child}){
-    const {childrenList,setChildrenList} = useContext(UserContext);
+
     return (
         <>
             <h2>{child.name}</h2>

@@ -24,12 +24,16 @@ export default function Navbar(){
     return(
     <nav className='navbar'>
         <h2>Memorybook</h2>
-        {user? (
+        {user ? (
             <>
             <Link className='navbar-link' to="/">HOME</Link>
             <Link className='navbar-link' to="child/">CHILD</Link>
  
-            <button className='button' onClick={()=>logOut(setUser)}>Log out</button>
+            <button className='button' onClick={()=>
+                [logOut(setUser),
+                navigate('/')]
+            }
+                >Log out</button>
             <form onSubmit={seachHandler}>
                 <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="search" />
                 <button className='button' type='submit'>Search</button>

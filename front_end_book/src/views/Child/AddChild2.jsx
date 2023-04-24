@@ -2,9 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import Select from 'react-select';
 import { addChild, currUser } from "../../utilities";
-import { useNavigate } from "react-router-dom";
 
 
 const Gender= [
@@ -13,7 +11,7 @@ const Gender= [
   {label: 'I prefer not to say', value:'N'},
 ]
 
-function AddChild() {
+function AddChild2() {
     const [show, setShow] = useState(false);
     const [name, setName] = useState("");
     const [birthdate, setBirthdate] = useState("");

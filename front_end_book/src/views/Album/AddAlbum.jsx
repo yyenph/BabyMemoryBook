@@ -24,7 +24,7 @@ export default function AddAlbum(){
             await addAlbum(name,child_name),
             console.log(name,child_name)
             setName(''),
-            navigate(`/child/${child_name}/albums/`)
+            navigate(`/${child_name}/albums`)
             
         }}>
             <input

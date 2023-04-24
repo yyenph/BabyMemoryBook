@@ -21,3 +21,14 @@ class Album(models.Model):
     child=models.ForeignKey(Child, on_delete=models.CASCADE, related_name='album')
     def __str__(self):
         return f"{self.name}"
+
+
+class Entry(models.Model):
+    title = models.CharField(max_length = 255, null = False, blank = False, unique = True)
+    date=models.DateField(null=False,blank=False)
+    image=models.ImageField(upload_to='album',null=True,blank=True)
+    caption = models.CharField(max_length = 255, null = False, blank = False, unique = True)
+    album=models.ForeignKey(Album,on_delete=models.CASCADE,related_name='albumentries', null=False,blank=False)
+    posted_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name='userentries')
+    def __str__(self):
+        return f"{self.title}" 

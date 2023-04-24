@@ -18,21 +18,24 @@ export const logIn = async(email, password, setUser) => {
         'email' : email,
         'password' : password
     })
-    window.location.reload()
+    console.log('login',response.data)
     setUser(response.data)
+    // window.location.reload()
 }
 
 export const currUser = async() =>{
     let response = await axios.get('/user/users/')
-    console.log('currUser',response.data)
-    return response.data
+    if (response.data['name']) {//check to make sure user is actually login so user? understand correctly
+        return response.data 
+    }
+    return null
 }
 
 export const logOut = async(setUser) => {
-    let response = await axios.post('/user/users/',{ logout: true })
-    if(response.data.logout){
-        setUser(null)
-    }
+    let response = await axios.post('/user/users/',{} )
+    setUser(null)
+    
+    
 }
 
 // Child related_---------------------------------------
@@ -55,5 +58,30 @@ export const addChild = async(name, birthdate, gender,profile_photo,username) =>
 export const getChildList = async()=> {
     let response= await axios.get('/child/')
     return response.data.child_list
+}
+
+//can not use UseParams here, can only use UseParams inside components that in rendered by the Route
+export const getAlbumloader = async(child_name)=> {
+    try{
+        const response= await axios.get(`/child/${child_name}/albums/`)
+        console.log(`album from ${child_name}`,response.data)
+        return response.data['album_list']
+    } catch (e){
+        console.error(e)
+        return null
+    }  
+
+}
+
+export const albumContentLoader = async(child_name,album_name)=> {
+    try{
+        const response= await axios.get(`/child/${child_name}/${album_name}/`)
+        console.log('albumContentLoader',response.data)
+        return response.data['album_content']
+    } catch (e){
+        console.error(e)
+        return null
+    }  
+
 }
 

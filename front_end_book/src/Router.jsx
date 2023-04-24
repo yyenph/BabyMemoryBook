@@ -4,14 +4,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {  Route } from "react-router-dom";
-// import { SignUp } from './components/SignUp';
 import Account from './components/Account';
 import Child from './views/Child/Child';
 import SignUp from './components/SignUp';
 import AddChild from './views/Child/AddChild';
-import { getChildList } from './utilities';
+import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
 import AddAlbum from './views/Album/AddAlbum';
+import AlbumContent from './views/Album/AlbumContent';
+
 
 const router= createBrowserRouter([
   {
@@ -36,6 +37,16 @@ const router= createBrowserRouter([
       {
         path: ":child_name/albums",
         element: <Albums />,
+        //pass params to the function and access it as params.child_name
+        loader: ({ params }) => getAlbumloader(params.child_name),
+        children: [
+          {
+            path:":child_name/:album_name",
+            element: <AlbumContent/>,
+            loader:({params})=>
+            albumContentLoader(params.child_name,params.album_name)
+          }
+        ]
       },
       {
         path: "/:child_name/addAlbum/",
@@ -45,17 +56,6 @@ const router= createBrowserRouter([
   },
 ]);
   
-  // const router = createBrowserRouter(
-    
-  //     <Routes>
-  //       <Route path="/" element={<App />} >
-  //         <Route path="account/" element={<Account />} />
-  //         <Route path="child/" element={<Child />} >
-  //           <Route path="addchild/" element={<AddChild />} />
-  //         </Route>
-  //       </Route>
-  //     </Routes>
-      
-    
-  // );
   export default router;
+
+

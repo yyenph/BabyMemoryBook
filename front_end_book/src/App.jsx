@@ -9,7 +9,7 @@ import { getToken } from "./components/CsrfToken";
 export const UserContext=createContext()
 
 function App() {
-  const [user,setUser]=useState();
+  const [user,setUser]=useState(null);
   getToken();
   const [childrenList,setChildrenList]=useState();
   
