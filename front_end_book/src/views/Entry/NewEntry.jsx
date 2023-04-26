@@ -2,6 +2,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { useParams,Link } from 'react-router-dom';
+import { newEntry,currUser,albumContentLoader } from '../../utilities';
+
 
 function NewEntry() {
     const [show, setShow] = useState(false);
@@ -9,7 +12,8 @@ function NewEntry() {
     const [date, setDate] = useState("");
     const [image,setImage] =useState('');
     const [caption, setCaption] = useState("");
-  
+    const {album_name}=useParams();
+    const {child_name}=useParams();
 
 
     const handleClose = () => setShow(false);
@@ -21,23 +25,22 @@ function NewEntry() {
     
     const handleSubmit =async (e)=>{
         
-            // e.preventDefault();
-            // const curruser = await currUser();
-            // console.log('addchild',curruser)
-            // console.log(curruser['name'])
-            // const username=curruser['name'];
-            // addChild(name, birthdate, gender,profile_photo,username);
-            // setName('');
-            // setBirthdate('');
-            // setGender('');
-            // setProfile_photo(null);
-            // navigate('/')
+            e.preventDefault();
+            const curruser = await currUser();
+            const username=curruser['name'];
+            newEntry(title, date, image,caption,album_name,username,child_name);
+            albumContentLoader()
+            setTitle('');
+            setDate('');
+            setImage(null);
+            setCaption('');
+            // navigate(`/${child_name}/${album.name}/`)
             
     }
   return (
     <>
       
-      <button className="addChild-button" onClick={handleShow}>New Entry</button>
+      <button className="newEntry-button" onClick={handleShow}>New Entry</button>
       
 
       <Modal show={show} onHide={handleClose}>
@@ -46,7 +49,7 @@ function NewEntry() {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit
-        }>
+        } id='newEntry-form'>
             <Form.Group className="mb-3" controlId="Editchild.ControlInput1">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -101,7 +104,8 @@ function NewEntry() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+      
+          <Button variant="primary" onClick={handleClose} type='submit' form='newEntry-form'>
             Save
           </Button>
         </Modal.Footer>

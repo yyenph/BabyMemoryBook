@@ -37,7 +37,7 @@ function EditChild() {
   return (
     <>
       
-      <button className="editchild-button" onClick={handleShow}>Edit Child</button>
+      <button className="button" onClick={handleShow}>Edit Child</button>
       
 
       <Modal show={show} onHide={handleClose}>

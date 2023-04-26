@@ -13,21 +13,29 @@
 .navbar-link{
   color:black;
 }
-.editchild-button,.button{
+.button{
+  border-radius: 0%;
+  background-color: none;
+  padding: 10px;
+  border:none;
+}
+.newEntry-button,.editchild-button,.button{
   border-radius: 0%;
   background-color: none;
   padding: 10px;
 }
-.editchild-button:hover,.navbar-link:hover,.button:hover{
+.editchild-button:hover,.navbar-link:hover,.button:hover, .newEntry-button:hover{
   border-radius: 0%;
   background-color: rgb(238, 237, 235);
   border-style: none;
   padding: 10px;
   color:black;
   border:none ;
+  font-family: monospace;
 }
 .child-card{
   display: flex;
+  flex-direction: row;
 
   }
 .child-display{
@@ -35,11 +43,15 @@
   text-align: center;
   font-family: monospace;
 }
-.add-child{
+
+.child-content,.add-child{
   padding: 30px;
   text-align: center;
   font-family: monospace;
   color: rgb(168, 168, 168)
+}
+.child-content{
+  color:black;
 }
 .addChild-button{
   display: flex;
@@ -67,4 +79,18 @@
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
+}
+/* card-content */
+.album-gallery{
+  display:grid;
+  grid-template-columns: repeat(autofit,mixmax(240px,1fr));
+  gap:10px;
+}
+
+.single_entry{
+  font-family: monospace;
+}
+.entry_image {
+  width: 100%;
+  object-fit: cover;
 }

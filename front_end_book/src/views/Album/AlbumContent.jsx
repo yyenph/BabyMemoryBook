@@ -1,16 +1,19 @@
-import NewEntry from "../Entry/NewEntry"
+
 
 export default function AlbumContent({entry}){
     
     return (
         <>
-            <h2>{entry.title}</h2>
-            <p>{entry.date}</p>
-            <img className='entry-image' src={`/media/${entry.image}`} alt="Img" />
-
-            <p>{entry.caption}</p>
+            {/* {( */}
+                <div className="single_entry">
+                <h2>{entry.title}</h2>
+                <img className='entry-image' src={`${entry.image}`} alt={entry.title} />
+                <p>{entry.date}</p>
+                <p>{entry.caption}</p>
+                
+                </div>
            
-            <NewEntry />
+         
         </>
         
     )

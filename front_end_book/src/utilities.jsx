@@ -72,12 +72,15 @@ export const getAlbumloader = async(child_name)=> {
     }  
 
 }
-
+//load entries that included in each album based on album name and child name
 export const albumContentLoader = async(child_name,album_name)=> {
     try{
         const response= await axios.get(`/child/${child_name}/${album_name}/`)
-        console.log('albumContentLoader',response.data)
-        return response.data['album_content']
+        console.log('serialized_entry',response.data)
+        return response.data['serialized_entry']
+        
+        // console.log('albumContentLoader',response.data)
+        // return response.data['album_content']
     } catch (e){
         console.error(e)
         return null
@@ -85,3 +88,24 @@ export const albumContentLoader = async(child_name,album_name)=> {
 
 }
 
+//add new entry to album. child_name,album_name is passed from useParams, the rest are from form submit
+export const newEntry =async(title,date,image,caption,album_name,username,child_name)=>{
+    try{
+        const formData= new FormData();
+        formData.append('title', title);
+        formData.append('date' , date);
+        formData.append('image' , image,);
+        formData.append('caption' , caption);
+        formData.append('album_name' , album_name,);
+        formData.append('username' , username)
+        const response = await axios.post(`/child/${child_name}/${album_name}/newentry`,formData,{
+            "Content-Type": "multipart/form-data"
+    
+        })
+        console.log('newEntry',response.data)
+        return response.data.sucess
+    }catch (e){
+        console.error(e)
+        return null
+    }
+}

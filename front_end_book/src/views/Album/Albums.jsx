@@ -10,20 +10,18 @@ export default function Album(){
 
     return (
         <>
-            <div>
+            <nav>
                 <Link to={`/${child_name}/addalbum`}>Add new Album</Link>
-            </div>
+            </nav>
             <div className="album-display">
                 {
                     albumlist.map((album)=>
                     <ul>
-                        <Link to={`${child_name}/${album.name}`}>{album.name}</Link>
-                        </ul>
-                  
+                        <Link to={`/${child_name}/${album.name}/`}>{album.name}</Link>
+                    </ul>
                     )
                 } 
             </div>
-            <Outlet />
             
         </>
     )

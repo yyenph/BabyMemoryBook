@@ -3,7 +3,7 @@ import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import ChildContent from "./ChildContent";
 import { getChildList } from "../../utilities";
 import './Childstyle.css'
-import AddChild from "./AddChild";
+
 
 export default function Child(){
     const child_list=useLoaderData();
@@ -13,7 +13,7 @@ export default function Child(){
         <div className="child-card">
             
             
-            <div className="child-display" >
+            
                 {child_list.map((child)=> (
                     <div className="child-content"
                     onClick={() => navigate(`/${child.name}/albums`)}
@@ -21,7 +21,7 @@ export default function Child(){
                         <ChildContent child={child}/>
                     </div> 
                 ))}
-            </div>
+            
             <div className="add-child" >
                 <h2>New child</h2>
                 <Link className="addChild-button" to="/child/addchild/">Add new Child</Link>

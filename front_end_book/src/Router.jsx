@@ -11,7 +11,7 @@ import AddChild from './views/Child/AddChild';
 import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
 import AddAlbum from './views/Album/AddAlbum';
-import AlbumContent from './views/Album/AlbumContent';
+import AlbumCard from './views/Album/AlbumCard';
 
 
 const router= createBrowserRouter([
@@ -39,18 +39,16 @@ const router= createBrowserRouter([
         element: <Albums />,
         //pass params to the function and access it as params.child_name
         loader: ({ params }) => getAlbumloader(params.child_name),
-        children: [
-          {
-            path:":child_name/:album_name",
-            element: <AlbumContent/>,
-            loader:({params})=>
-            albumContentLoader(params.child_name,params.album_name)
-          }
-        ]
       },
       {
         path: "/:child_name/addAlbum/",
         element: <AddAlbum />,
+      },
+      {
+        path:"/:child_name/:album_name/",
+        element: <AlbumCard/>,
+        loader:({params})=>
+        albumContentLoader(params.child_name,params.album_name)
       }
     ],
   },
