@@ -23,7 +23,7 @@ export default function Navbar(){
     console.log('user:', user);
     return(
     <nav className='navbar'>
-        <h2>Memorybook</h2>
+        <h2 className='appname'>Memorybook</h2>
         {user ? (
             <>
             <Link className='navbar-link' to="/">HOME</Link>
@@ -33,10 +33,10 @@ export default function Navbar(){
                 [logOut(setUser),
                 navigate('/')]
             }
-                >Log out</button>
+                >LOG OUT</button>
             <form onSubmit={seachHandler}>
-                <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="search" />
-                <button className='button' type='submit'>Search</button>
+                <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="Search" />
+                <button className='button' type='submit'>SEARCH</button>
             </form>
             </>
         ): 

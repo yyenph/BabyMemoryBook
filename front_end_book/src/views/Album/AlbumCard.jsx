@@ -14,11 +14,14 @@ export default function AlbumCard(){
    
             {
                 album.length!==0?(
-                    <div className="album-gallery">
+                    <div>
                         <NewEntry />
-                        {album.map((entry)=>
-                        (<AlbumContent entry={entry}/>)
-                        )}
+                        <div className="album-gallery">
+                            
+                            {album.map((entry)=>
+                            (<AlbumContent entry={entry}/>)
+                            )}
+                        </div>
                     </div>
             ):
                 (<NewEntry />)

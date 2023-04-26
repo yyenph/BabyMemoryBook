@@ -1,3 +1,7 @@
+.appname{
+  color:rgb(136, 109, 54);
+  font-size: 2rem;
+}
 .navbar{
   display:flex;
   flex-direction: row;
@@ -8,16 +12,54 @@
   width: 100%;
   font-family: monospace;
   height: 30px;
-  color:black
+  color:rgb(241, 231, 211);
+
+  box-shadow: 0 0 2px;
+  padding: 10px 0px;
 }
 .navbar-link{
   color:black;
 }
 .button{
+  font-family: monospace;
   border-radius: 0%;
-  background-color: none;
+  background-color: transparent;
   padding: 10px;
   border:none;
+  background-color: rgb(241, 231, 211);
+  transition-delay: background-color 0.2s ease-in-out 0.5s;
+}
+.button:hover{
+  cursor: pointer;
+  background-color: rgb(136, 109, 54);
+  color: white;
+}
+
+/* namefinder and result card */
+.namefinder-card{
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  font-family: monospace;
+  padding: 40px;
+
+
+}
+.name-finder{
+  display: block;
+  margin-top: 70px;
+  padding: 15px;
+}
+.nameidea-form,.names-result{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 2px  rgb(136, 109, 54);
+  border: none;
+  padding:15px 20px;
+  margin:10px 0px;
 }
 .newEntry-button,.editchild-button,.button{
   border-radius: 0%;
@@ -26,12 +68,13 @@
 }
 .editchild-button:hover,.navbar-link:hover,.button:hover, .newEntry-button:hover{
   border-radius: 0%;
-  background-color: rgb(238, 237, 235);
+  background-color: rgb(241, 231, 211);
   border-style: none;
   padding: 10px;
   color:black;
   border:none ;
   font-family: monospace;
+  cursor: pointer;
 }
 .child-card{
   display: flex;
@@ -48,7 +91,7 @@
   padding: 30px;
   text-align: center;
   font-family: monospace;
-  color: rgb(168, 168, 168)
+  color: rgb(241, 231, 211)
 }
 .child-content{
   color:black;
@@ -61,14 +104,14 @@
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  border:solid rgb(168, 168, 168) 1px ;
+  border:solid rgb(241, 231, 211) 1px ;
   font-family: monospace;
-  color:rgb(168, 168, 168);
+  color:rgb(241, 231, 211);
   text-align: center;
 
 }
 .addChild-button:hover{
-  background-color: rgb(168, 168, 168);
+  background-color: rgb(241, 231, 211);
   color: white;
 }
 
@@ -82,15 +125,57 @@
 }
 /* card-content */
 .album-gallery{
-  display:grid;
-  grid-template-columns: repeat(autofit,mixmax(240px,1fr));
-  gap:10px;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit,minmax(100px,300px));
+  justify-content: center;
+  
+  
 }
-
 .single_entry{
   font-family: monospace;
 }
-.entry_image {
-  width: 100%;
-  object-fit: cover;
+#img-title{
+  font-size: 1.5rem;
+  color:rgb(136, 109, 54);
+  font-weight: 400;
 }
+
+.entry-image {
+
+  width: 100%;
+  padding:5px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+/* entry form */
+#newEntry-form{
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  margin: 0 auto;
+  width: 80%;
+  border: solid 1px rgb(241, 231, 211);
+  border-radius: 15px;
+  padding: 15px;
+}
+
+#newEntry-form label {
+  margin-bottom: 0.5rem;
+}
+
+#newEntry-form input[type="text"],
+#newEntry-form input[type="file"] {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(241, 231, 211);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#newEntry-form button {
+  margin-top: 1rem;
+}
+

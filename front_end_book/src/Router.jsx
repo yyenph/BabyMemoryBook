@@ -6,19 +6,23 @@ import {
 import {  Route } from "react-router-dom";
 import Account from './components/Account';
 import Child from './views/Child/Child';
-import SignUp from './components/SignUp';
 import AddChild from './views/Child/AddChild';
 import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
 import AddAlbum from './views/Album/AddAlbum';
 import AlbumCard from './views/Album/AlbumCard';
-
+import NameIdea from './components/NameIdea';
+import SignUp from './components/SignUp';
 
 const router= createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/namefinder/",
+        element: <NameIdea />,
+      },
       {
         path: "/signup/",
         element: <SignUp />,

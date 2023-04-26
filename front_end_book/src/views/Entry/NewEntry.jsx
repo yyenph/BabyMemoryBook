@@ -40,13 +40,11 @@ function NewEntry() {
   return (
     <>
       
-      <button className="newEntry-button" onClick={handleShow}>New Entry</button>
+      <button className="button" onClick={handleShow}>New Entry</button>
       
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>New Entry</Modal.Title>
-        </Modal.Header>
+      
         <Modal.Body>
           <Form onSubmit={handleSubmit
         } id='newEntry-form'>
