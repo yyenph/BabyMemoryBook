@@ -23,24 +23,31 @@ export default function Navbar(){
     console.log('user:', user);
     return(
     <nav className='navbar'>
-        <h2 className='appname'>Memorybook</h2>
+        
         {user ? (
             <>
-            <Link className='navbar-link' to="/">HOME</Link>
-            <Link className='navbar-link' to="child/">CHILD</Link>
- 
-            <button className='button' onClick={()=>
-                [logOut(setUser),
-                navigate('/')]
-            }
-                >LOG OUT</button>
-            <form onSubmit={seachHandler}>
-                <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="Search" />
-                <button className='button' type='submit'>SEARCH</button>
-            </form>
+            <div className='navbar-left'>
+                <h2 className='appname'>Memorybook</h2>
+                <Link className='navbar-link' to="/">HOME</Link>
+                <Link className='navbar-link' to="child/">CHILD</Link>
+            </div>
+
+            <div className='navbar-right'>
+                <button className='nav-button' onClick={()=>
+                    [logOut(setUser),
+                    navigate('/')]
+                }
+                    >LOG OUT</button>
+                <form onSubmit={seachHandler}>
+                    <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="Search" />
+                    <button className='nav-button' type='submit'>SEARCH</button>
+                </form>
+            </div>
             </>
+            
         ): 
         (<>
+            <h2 className='appname'>Memorybook</h2>
             <p onClick={toggleModal} id='SignIn'>
             Sign In or Create Account
             </p>

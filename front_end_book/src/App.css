@@ -1,11 +1,12 @@
 .appname{
   color:rgb(136, 109, 54);
   font-size: 2rem;
+  margin: 0px 20px;
 }
 .navbar{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   position: absolute;
   top:0px;
@@ -13,60 +14,60 @@
   font-family: monospace;
   height: 30px;
   color:rgb(241, 231, 211);
-
-  box-shadow: 0 0 2px;
   padding: 10px 0px;
+}
+.navbar-left{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar-right{
+  display: flex;
+  justify-content: flex-end;
+
+
 }
 .navbar-link{
   color:black;
+  margin: 0px 20px;
 }
-.button{
+/* button styling */
+.nav-button{
   font-family: monospace;
-  border-radius: 0%;
   background-color: transparent;
-  padding: 10px;
+  padding: 5px 15px;
   border:none;
   background-color: rgb(241, 231, 211);
   transition-delay: background-color 0.2s ease-in-out 0.5s;
+  border-radius: 5px;
+  margin: 0px 20px;
+}
+.navbar-link:hover,.nav-button:hover{
+  cursor: pointer;
+  color: rgb(79, 53, 1);
+  border: 2px solid rgb(79, 53, 1);
+  padding: 5px 15px;
+}
+
+.button{ 
+  font-family: monospace;
+  background-color: transparent;
+  padding: 5px 15px;
+  border:none;
+  background-color: rgb(241, 231, 211);
+  transition-delay: background-color 0.2s ease-in-out 0.5s;
+  border-radius: 5px;
 }
 .button:hover{
-  cursor: pointer;
-  background-color: rgb(136, 109, 54);
-  color: white;
+  border: 2px solid rgb(79, 53, 1);
+  color: rgb(79, 53, 1);
 }
-
-/* namefinder and result card */
-.namefinder-card{
-  display: flex;
-  flex-direction: column;
-  margin-top: 100px;
-  font-family: monospace;
-  padding: 40px;
-
-
-}
-.name-finder{
-  display: block;
-  margin-top: 70px;
-  padding: 15px;
-}
-.nameidea-form,.names-result{
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 0 2px  rgb(136, 109, 54);
-  border: none;
-  padding:15px 20px;
-  margin:10px 0px;
-}
-.newEntry-button,.editchild-button,.button{
+.newEntry-button,.editchild-button{
   border-radius: 0%;
   background-color: none;
   padding: 10px;
 }
-.editchild-button:hover,.navbar-link:hover,.button:hover, .newEntry-button:hover{
+.editchild-button:hover,.navbar-link:hover,.newEntry-button:hover{
   border-radius: 0%;
   background-color: rgb(241, 231, 211);
   border-style: none;
@@ -76,6 +77,52 @@
   font-family: monospace;
   cursor: pointer;
 }
+
+/* API card */
+.api-card{
+  display: flex;
+  flex-direction: row;
+}
+/* namefinder and result card */
+.namefinder-card,.lyricsfinder-card{
+  display: flex;
+  /* flex-direction: column; */
+  margin-top: 80px;
+  font-family: monospace;
+  padding: 40px;
+  width: 45%;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(204, 204, 204);
+
+
+}
+.finder-input{
+  display: block;
+  padding: 4px 0px;
+  width: 90%;
+  margin: 10px;
+ 
+  color: rgb(204, 204, 204);
+  border-radius: 4px;
+}
+.lyrics{
+  border: solid 1px rgb(204, 204, 204);
+}
+.nameidea-form,.lyrics-finder-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 2px  rgb(136, 109, 54);
+  border: none;
+  padding:15px 20px;
+  margin:10px 0px;
+}
+
 .child-card{
   display: flex;
   flex-direction: row;

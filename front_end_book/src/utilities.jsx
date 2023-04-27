@@ -1,7 +1,40 @@
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import AddAlbum from './views/Album/AddAlbum';
 
+
+
+
+//API submit handler
+export const submitNameHandler = async (gender,setNameList)=>{
+    const response = await axios.get('https://baby-names-by-api-ninjas.p.rapidapi.com/v1/babynames',{
+    params: {gender: gender},    
+    headers: {
+            'content-type': 'application/octet-stream',
+            'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+            'X-RapidAPI-Host': 'baby-names-by-api-ninjas.p.rapidapi.com'
+          }
+    });
+    setNameList(response.data);
+  
+  }
+  //Lyrics finder api
+
+export const submitLyricsHandler = async (setQuote)=>{
+    // e.preventDefault();
+    const response = await axios.get('https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote'
+    ,{
+        params: {
+            token: 'ipworld.info'
+          },
+          headers: {
+            'content-type': 'application/octet-stream',
+            'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+            'X-RapidAPI-Host': 'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com'
+          }
+    });
+   
+    setQuote(response.data);
+
+  }
 // User Authenticate
 export const signUp = async(name, email, password) => {
     let response = await axios.post('/user/users/' , {

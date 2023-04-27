@@ -3,12 +3,12 @@ import { createContext, useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import './App.css'
 import { Outlet,useNavigate } from 'react-router-dom';
-import { currUser } from './utilities';
+import { currUser,submitNameHandler,submitLyricsHandler } from './utilities';
 import { getToken } from "./components/CsrfToken";
 import NameIdea from './components/NameIdea';
 import Select from 'react-select';
 import axios from "axios";
-export const UserContext=createContext()
+export const UserContext=createContext();
 
 const Gender= [
   {label: 'Girl', value:'girl'},
@@ -22,6 +22,7 @@ function App() {
   const [childrenList,setChildrenList]=useState();
   const [gender,setGender]=useState('');
   const [nameList,setNameList]=useState([])
+  const [quote,setQuote]=useState('')
   const navigate=useNavigate();
 
 
@@ -32,38 +33,56 @@ function App() {
     getCurrUser();
   },[])
 // namefinder api 
-const submitHandler = async (e)=>{
-  e.preventDefault();
-  const response = await axios.get('https://baby-names-by-api-ninjas.p.rapidapi.com/v1/babynames',{
-      headers: {
-          'content-type': 'application/octet-stream',
-          'X-RapidAPI-Key': '438befd54bmsh04adaf03ced30edp18739ajsnf6c968713038',
-          'X-RapidAPI-Host': 'baby-names-by-api-ninjas.p.rapidapi.com'
-        }
-  });
-  setGender('');
-  setNameList(response.data);
-  console.log(nameList)
-  navigate('/namefinder/');
-}
+  useEffect(()=>{
+
+  })
 
   return (
     <div className="App">
-      <div className='namefinder-card'>
-        <p>Baby Name Finder </p>
-          <form className='nameidea-form'onSubmit={submitHandler}>
-              <div>
-                      <Select 
-                          options={Gender}
-                          onChange={(selectedOption) => setGender(selectedOption['value'])} 
-                      />
-              </div>
+      <div className='api-card'>
+        <div className='namefinder-card'>
+          
+          <form className='nameidea-form'onSubmit={(e)=>{
+            e.preventDefault();
+            submitNameHandler(gender,setNameList);
+            setGender('');
+            console.log(nameList);
+            navigate('/namefinder/');
+          }
+            }>
+              <p>Baby Name Finder </p>
+              
+              <Select 
+                  className='finder-input'
+                  options={Gender}
+                  onChange={(selectedOption) => setGender(selectedOption['value'])} 
+              />
+              
               <input className="button" type="submit" value="Get Idea" />
               
           </form>
+        </div>
+        <div className='lyricsfinder-card'>
+        
+        <form className='lyrics-finder-form'  onSubmit={(e)=>{
+            e.preventDefault();
+            submitLyricsHandler(setQuote);
+            // navigate('/quotegenerator/');
+          }
+            }>
+            <p>Quote of the day </p>
+            {quote &&(
+            <div className="quote">
+            <p>{quote.text}</p> 
+            <p>{quote.author}</p>
+            </div>
+        )}
+            <input className="button" type="submit" value="Get today quote!" />
+            
+        </form>
       </div>
-       
-      <UserContext.Provider value={{user, setUser,nameList}} >
+      </div>
+      <UserContext.Provider value={{user, setUser,nameList,quote}} >
         <Navbar />
         <Outlet />
       </UserContext.Provider>
