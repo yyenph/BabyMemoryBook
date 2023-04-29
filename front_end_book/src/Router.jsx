@@ -42,7 +42,7 @@ const router= createBrowserRouter([
         ]
       },
       {
-        path: ":child_name/ ",
+        path: ":child_name/albums",
         element: <Albums />,
         //pass params to the function and access it as params.child_name
         loader: ({ params }) => getAlbumloader(params.child_name),

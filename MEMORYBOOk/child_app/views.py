@@ -132,12 +132,8 @@ def deleteEntry(request,child_name,album_name,entry_title):
         try: 
             entry=Entry.objects.get(title=entry_title)
             entry.delete()
-            entries_list=[model_to_dict(entry) for entry in album.albumentries.all()]
-            print(entries_list)
-            return JsonResponse({'entries_list': entries_list})
+            return JsonResponse({'success': True})
         except Exception as e:
             print(e)
-            entries_list=[model_to_dict(entry) for entry in album.albumentries.all()]
-            print(entries_list)
-            return JsonResponse({'entries_list': entries_list})
+            return JsonResponse({'success': False})
             
