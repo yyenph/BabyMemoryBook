@@ -3,6 +3,7 @@ import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import ChildContent from "./ChildContent";
 import { getChildList } from "../../utilities";
 import './Childstyle.css'
+import AddChild2 from "./AddChild2";
 
 
 export default function Child(){
@@ -24,8 +25,8 @@ export default function Child(){
             
             <div className="add-child" >
                 <h2>New child</h2>
-                <Link className="addChild-button" to="/child/addchild/">Add new Child</Link>
-                {/* <AddChild /> */}
+                {/* <Link className="addChild-button" to="/child/addchild/">+</Link> */}
+                <AddChild2 />
                 <p>Birthday</p>
                 <p>Age</p>
             </div>

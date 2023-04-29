@@ -34,17 +34,19 @@ function NewEntry() {
             setDate('');
             setImage(null);
             setCaption('');
-            // navigate(`/${child_name}/${album.name}/`)
+            navigate(`/${child_name}/${album.name}/`)
             
     }
   return (
     <>
       
-      <button className="button" onClick={handleShow}>New Entry</button>
+      <button className="new-entry-button" onClick={handleShow}>New Entry</button>
       
 
       <Modal show={show} onHide={handleClose}>
-      
+        <Modal.Header closeButton>
+          <Modal.Title>New Entry</Modal.Title>
+        </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit
         } id='newEntry-form'>

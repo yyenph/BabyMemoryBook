@@ -34,11 +34,12 @@ function AddChild2() {
             console.log(curruser['name'])
             const username=curruser['name'];
             addChild(name, birthdate, gender,profile_photo,username);
+            console.log('addchild-form',name, birthdate, gender,profile_photo,username)
             setName('');
             setBirthdate('');
             setGender('');
             setProfile_photo(null);
-            navigate('/')
+            navigate('/child/')
             
     }
   return (
@@ -49,37 +50,17 @@ function AddChild2() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Child</Modal.Title>
+          <Modal.Title>New Child</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit
-        }>
-           {/* <input
-                placeholder="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input
-                placeholder="birthdate YYYY-MM-DD"
-                value={birthdate}
-                onChange={(e) => setBirthdate(e.target.value)}
-            />
-            
-            <div>
-                <Select 
-                    options={Gender}
-                    onChange={(selectedOption) => setGender(selectedOption['value'])} 
-                />
-            </div>
-            <div>
-                <input type="file" name='profile_photo' onChange={handleImage}/>
-            </div>
-            <input type="submit" value="Save Child" /> */}
+        } id='addChild-form'>
+           
             <Form.Group className="mb-3" controlId="Editchild.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="name"
-                placeholder="name"
+                type="text"
+                placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 autoFocus
@@ -91,7 +72,7 @@ function AddChild2() {
             >
                 <Form.Label>Birthdate</Form.Label>
                 <Form.Control
-                type="birthdate"
+                type="text"
                 placeholder="YYYY-MM-DD"
                 value={birthdate}
                 onChange={(e) => setBirthdate(e.target.value)}
@@ -103,7 +84,7 @@ function AddChild2() {
               controlId="Editchild.ControlTextarea1"
             >
                 <Form.Label>Gender</Form.Label>
-                <Form.Select aria-label="Default select example" onChange={(selectedOption) => setGender(selectedOption['value'])}>
+                <Form.Select aria-label="Default select example" onChange={(e) => setGender(e.target.value)}>
                     <option>Choose gender</option>
                     <option value="G">Girl</option>
                     <option value="B">Boy</option>
@@ -114,7 +95,7 @@ function AddChild2() {
               className="mb-3"
               controlId="Editchild.ControlTextarea1"
             >
-                <Form.Label>Birthdate</Form.Label>
+                <Form.Label>Profile photo</Form.Label>
                 <Form.Control
                     type='file'
                     name='profile_photo'
@@ -128,7 +109,9 @@ function AddChild2() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}
+          type='submit' form='addChild-form'
+          >
             Save
           </Button>
         </Modal.Footer>
@@ -137,4 +120,4 @@ function AddChild2() {
   );
 }
 
-export default AddChild;
+export default AddChild2;

@@ -12,8 +12,8 @@ export default function QuoteGenerator (){
         
         {quote &&(
             <div className="quote">
-            <h3>{quote.text}</h3> 
-            <p>{quote.author}</p>
+            <h3>"{quote.text}"</h3> 
+            <p className="author">{quote.author}</p>
             </div>
         )
         } 

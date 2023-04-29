@@ -112,7 +112,6 @@ def newEntry(request,child_name,album_name):
                 date=date,
                 image=image,
                 caption=caption,
-        
                 album=album,
                 posted_by=posted_by
             )
@@ -125,3 +124,20 @@ def newEntry(request,child_name,album_name):
             print(e)
 #double-check if it return correctly when its fail to create new entry but the list already have existing entry
             return JsonResponse({'album_list': []})
+    
+@api_view(['DELETE'])
+#dont need to use child_name,album_name but need to pass as parameter since its included in the url
+def deleteEntry(request,child_name,album_name,entry_title):
+    if request.method=='DELETE':
+        try: 
+            entry=Entry.objects.get(title=entry_title)
+            entry.delete()
+            entries_list=[model_to_dict(entry) for entry in album.albumentries.all()]
+            print(entries_list)
+            return JsonResponse({'entries_list': entries_list})
+        except Exception as e:
+            print(e)
+            entries_list=[model_to_dict(entry) for entry in album.albumentries.all()]
+            print(entries_list)
+            return JsonResponse({'entries_list': entries_list})
+            

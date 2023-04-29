@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../App";
-import EditChild from "./EditChild";
+
 
 export default function ChildContent({child}){
 
@@ -11,7 +11,7 @@ export default function ChildContent({child}){
 
             <p>Birthday: {child.birthdate}</p>
             <p>Age</p>
-            <EditChild />
+       
         </>
         
     )

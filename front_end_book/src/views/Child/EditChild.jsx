@@ -46,7 +46,7 @@ function EditChild() {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit
-        }>
+        } id='editchild-form'>
             <Form.Group className="mb-3" controlId="Editchild.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -100,7 +100,7 @@ function EditChild() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose} type='submit' form='editchild-form'>
             Save Changes
           </Button>
         </Modal.Footer>

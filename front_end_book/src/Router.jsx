@@ -1,15 +1,13 @@
 import App from './App'
 import {
   createBrowserRouter,
-  RouterProvider,
 } from "react-router-dom";
-import {  Route } from "react-router-dom";
-import Account from './components/Account';
+
 import Child from './views/Child/Child';
-import AddChild from './views/Child/AddChild';
+import AddChild2 from './views/Child/AddChild2';
 import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
-import AddAlbum from './views/Album/AddAlbum';
+
 import AlbumCard from './views/Album/AlbumCard';
 import NameIdea from './components/NameIdea';
 import QuoteGenerator from './components/QuoteGenerator';
@@ -39,19 +37,15 @@ const router= createBrowserRouter([
         children:[
           {
             path: "addchild/",
-            element: <AddChild />,
+            element: <AddChild2 />,
           },
         ]
       },
       {
-        path: ":child_name/albums",
+        path: ":child_name/ ",
         element: <Albums />,
         //pass params to the function and access it as params.child_name
         loader: ({ params }) => getAlbumloader(params.child_name),
-      },
-      {
-        path: "/:child_name/addAlbum/",
-        element: <AddAlbum />,
       },
       {
         path:"/:child_name/:album_name/",

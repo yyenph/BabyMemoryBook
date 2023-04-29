@@ -62,12 +62,23 @@
   border: 2px solid rgb(79, 53, 1);
   color: rgb(79, 53, 1);
 }
-.newEntry-button,.editchild-button{
+.new-entry-button,.back-to-albums-button{
+  font-family: monospace;
+  background-color: transparent;
+  padding: 5px 15px;
+  border:none;
+  background-color: rgb(241, 231, 211);
+  transition-delay: background-color 0.2s ease-in-out 0.5s;
+  border-radius: 5px;
+  margin: 30px;
+  padding: 10px;
+}
+.editchild-button{
   border-radius: 0%;
   background-color: none;
   padding: 10px;
 }
-.editchild-button:hover,.navbar-link:hover,.newEntry-button:hover{
+.editchild-button:hover,.navbar-link:hover,.new-entry-button:hover,.back-to-albums-button{
   border-radius: 0%;
   background-color: rgb(241, 231, 211);
   border-style: none;
@@ -82,9 +93,10 @@
 .api-card{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 /* namefinder and result card */
-.namefinder-card,.lyricsfinder-card{
+.namefinder-card,.quote-card{
   display: flex;
   /* flex-direction: column; */
   margin-top: 80px;
@@ -110,7 +122,7 @@
 .lyrics{
   border: solid 1px rgb(204, 204, 204);
 }
-.nameidea-form,.lyrics-finder-form{
+.nameidea-form,.quote-form{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -122,12 +134,40 @@
   padding:15px 20px;
   margin:10px 0px;
 }
+.names-result{
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  color:rgb(136, 109, 54);
+  justify-content: center;
+  border: 1px solid rgb(204, 204, 204);;
+  border-radius: 10px;
+  padding:15px 20px;
+  margin:10px 20px;
+}
+.name-list{
+  color:rgb(204, 204, 204);
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  flex-wrap: wrap;
+  
+}
 
+.author{
+  font-size: 0.1rem;
+}
 .child-card{
   display: flex;
   flex-direction: row;
+  margin: 0px 20px;
 
   }
+.api-title{
+  color:rgb(136, 109, 54);
+  font-size: 1rem;
+}
 .child-display{
   padding: 30px;
   text-align: center;
@@ -147,37 +187,87 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   border-radius: 50%;
+  font-size: 3rem;
   border:solid rgb(241, 231, 211) 1px ;
   font-family: monospace;
   color:rgb(241, 231, 211);
   text-align: center;
-
+  text-decoration: none;
 }
 .addChild-button:hover{
   background-color: rgb(241, 231, 211);
   color: white;
 }
 
-
-
 .profile-photo{
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   border-radius: 50%;
 }
+/* album  */
+.album-display{
+  margin: 30px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.album-title{
+  font-family: monospace;
+  margin: 10px 50px ;
+}
+.back-to-child-button{
+  font-family: monospace;
+  margin: 10px 50px ;
+  text-decoration: none;
+}
+
+.album_name{
+  font-family: monospace;
+  padding: 40px 50px;
+  margin: 30px;
+  color: black;
+ 
+  background-color: rgb(241, 231, 211);
+  box-shadow: 0px 0px 1px rgb(79, 53, 1);
+}
+.add-album{
+  font-family: monospace;
+  margin: 30px;
+  text-decoration: none;
+  padding: 50px 50px;
+  color: white;
+  background-color: rgb(241, 231, 211);
+  box-shadow: 0px 0px 1px rgb(241, 231, 211);
+}
+.album_name:hover,.add-album:hover{
+  font-family: monospace;
+  padding: 40px 50px;
+  background-color: rgb(241, 231, 211);
+  cursor: pointer;
+  color: rgb(79, 53, 1);
+  border: 2px solid rgb(79, 53, 1);
+}
+
+.add-album:hover{
+  font-family: monospace;
+  padding: 50px 50px;
+  background-color: rgb(241, 231, 211);
+  cursor: pointer;
+  color: rgb(79, 53, 1);
+  border: 2px solid rgb(79, 53, 1);
+}
+
 /* card-content */
 .album-gallery{
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit,minmax(100px,300px));
   justify-content: center;
-  
-  
 }
 .single_entry{
   font-family: monospace;
@@ -196,7 +286,7 @@
   border-radius: 15px;
 }
 /* entry form */
-#newEntry-form{
+#newEntry-form,#newAlbum-form, #addChild-form{
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -211,6 +301,10 @@
 #newEntry-form label {
   margin-bottom: 0.5rem;
 }
+.modal-title {
+  font-family: monospace;
+  color:rgb(79, 53, 1);
+}
 
 #newEntry-form input[type="text"],
 #newEntry-form input[type="file"] {
@@ -222,7 +316,20 @@
   box-sizing: border-box;
 }
 
-#newEntry-form button {
-  margin-top: 1rem;
+.modal-footer button {
+  font-family: monospace;
+  background-color: transparent;
+  padding: 5px 15px;
+  border:none;
+  background-color: rgb(241, 231, 211);
+  transition-delay: background-color 0.2s ease-in-out 0.5s;
+  border-radius: 5px;
 }
-
+.modal-footer button:hover{
+  
+  
+  background-color: rgb(241, 231, 211);
+  cursor: pointer;
+  color: rgb(79, 53, 1);
+  border: 2px solid rgb(79, 53, 1);
+}

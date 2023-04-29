@@ -142,3 +142,15 @@ export const newEntry =async(title,date,image,caption,album_name,username,child_
         return null
     }
 }
+//delete entry 
+export const deleteEntry= async (child_name,album_name,entry_title)=>{
+    try{
+        
+        const response = await axios.delete(`/child/${child_name}/${album_name}/${entry_title}`)
+        console.log('delete',response.data)
+        return response.data.sucess
+    }catch (e){
+        console.error(e)
+        return null
+    }
+}

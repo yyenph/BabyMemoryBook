@@ -50,7 +50,7 @@ function App() {
             navigate('/namefinder/');
           }
             }>
-              <p>Baby Name Finder </p>
+              <p className='api-title'>Baby Name Finder </p>
               
               <Select 
                   className='finder-input'
@@ -62,15 +62,15 @@ function App() {
               
           </form>
         </div>
-        <div className='lyricsfinder-card'>
+        <div className='quote-card'>
         
-        <form className='lyrics-finder-form'  onSubmit={(e)=>{
+        <form className='quote-form'  onSubmit={(e)=>{
             e.preventDefault();
             submitLyricsHandler(setQuote);
-            // navigate('/quotegenerator/');
+      
           }
             }>
-            <p>Quote of the day </p>
+            <p className='api-title'>Quote of the day </p>
             {quote &&(
             <div className="quote">
             <p>{quote.text}</p> 

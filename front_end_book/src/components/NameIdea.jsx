@@ -11,13 +11,13 @@ export default function NameIdea (){
         
         {nameList.length>0 &&(
             <div className="names-result">
-            <h3>Baby Name Ideas You'll Love</h3>
-            <ul>
-                {nameList.map((name)=> (
-                    <li>{name}</li>
-                )
-                )}
-            </ul>
+                <p className="namecard-title">Baby Name Ideas You'll Love</p>
+                <ul className="name-list">
+                    {nameList.map((name)=> (
+                        <li>{name}</li>
+                    )
+                    )}
+                </ul>
             </div>
         )
         } 
