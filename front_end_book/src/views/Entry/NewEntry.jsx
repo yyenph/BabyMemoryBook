@@ -6,7 +6,7 @@ import { useParams,Link } from 'react-router-dom';
 import { newEntry,currUser,albumContentLoader } from '../../utilities';
 
 
-function NewEntry() {
+function NewEntry({addEntry}) {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
@@ -28,13 +28,14 @@ function NewEntry() {
             e.preventDefault();
             const curruser = await currUser();
             const username=curruser['name'];
-            newEntry(title, date, image,caption,album_name,username,child_name);
-            albumContentLoader()
+            const entry=await newEntry(title, date, image,caption,album_name,username,child_name);
+            albumContentLoader();
             setTitle('');
             setDate('');
             setImage(null);
             setCaption('');
-            navigate(`/${child_name}/${album.name}/`)
+            props.addEntry(entry); // Call the addEntry function with the new entry
+            handleClose();
             
     }
   return (

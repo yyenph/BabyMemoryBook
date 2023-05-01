@@ -11,7 +11,7 @@ import json
 # Create your views here.
 
 # Child related function
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST','DELETE'])
 def child(request):
     if request.method=='POST':
         child_list=list(Child.objects.filter(user=request.user).values())
@@ -23,14 +23,26 @@ def child(request):
         except Exception as e:
             print(e)
             return JsonResponse({'child_list':child_list})
-    elif request.method=='GET':
+    elif request.method=='GET':#get child list
         try:
             child_list=list(Child.objects.filter(user=request.user).values())
-            print('child',child_list)
+            # print('child',child_list)
             return JsonResponse({'child_list': child_list})
         except Exception as e:
             print(e)
             return JsonResponse({'child_list': []})
+    elif request.method=='DELETE':#delete child
+        try: 
+            name=request.data['child_name']
+            child=Child.objects.get(name=name)
+            child.delete()
+            print('deletechild',request.body)
+            print('deletechild',child)
+            return JsonResponse({'success': True})
+        except Exception as e:
+            print(e)
+            return JsonResponse({'success': False})
+        
 
 # Album related function    
 @api_view(['GET'])

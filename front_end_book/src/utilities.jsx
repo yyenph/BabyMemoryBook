@@ -87,6 +87,18 @@ export const addChild = async(name, birthdate, gender,profile_photo,username) =>
     window.location.reload()
     return response.data.success
 }
+//delete entry 
+export const deleteChild= async (child_name)=>{
+    try{
+        const response = await axios.delete('/child/')
+        console.log(child_name)
+        console.log('delete',response.data)
+        return response.data.sucess
+    }catch (e){
+        console.error(e)
+        return null
+    }
+}
 
 export const getChildList = async()=> {
     let response= await axios.get('/child/')

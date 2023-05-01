@@ -9,7 +9,11 @@ import axios from "axios";
 
 
 function NewAlbum() {
+  // modal form
   const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+// form details
   const [name, setName] = useState("");
   const {child_name} =useParams();
   const navigate=useNavigate()
@@ -23,9 +27,6 @@ function NewAlbum() {
         
     }
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-   
     
     const handleSubmit =async (e)=>{
         e.preventDefault();

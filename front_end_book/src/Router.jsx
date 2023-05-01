@@ -7,11 +7,10 @@ import Child from './views/Child/Child';
 import AddChild2 from './views/Child/AddChild2';
 import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
-
 import AlbumCard from './views/Album/AlbumCard';
 import NameIdea from './components/NameIdea';
 import QuoteGenerator from './components/QuoteGenerator';
-import SignUp from './components/SignUp';
+
 
 const router= createBrowserRouter([
   {
@@ -25,10 +24,6 @@ const router= createBrowserRouter([
       {
         path: "/quotegenerator/",
         element: <QuoteGenerator />,
-      },
-      {
-        path: "/signup/",
-        element: <SignUp />,
       },
       {
         path: "/child/",

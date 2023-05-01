@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { UserContext } from "../App";
 import { logIn } from "../utilities";
+import SignUp from "./SignUp";
 
 
 export default function SignIn(){
@@ -12,6 +13,7 @@ export default function SignIn(){
     const {setUser} = useContext(UserContext);
 
     return (
+        <>
             <form
             id="signin-modal"
             onSubmit={(e)=>{[
@@ -32,11 +34,13 @@ export default function SignIn(){
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <input type="submit" value="Sign In" />
-                <Link to="signup/">Create an Account</Link>
-            
-                <s>&times;</s>
+                <input className="nav-button" type="submit" value="Sign In" />
+                {/* <Link to="signup/">Create an Account</Link> */}
+                
+          
             </form>
+            <SignUp/>
+        </>
         
     )
 }
