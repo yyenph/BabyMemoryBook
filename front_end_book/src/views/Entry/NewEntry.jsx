@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useParams,Link } from 'react-router-dom';
 import { newEntry,currUser,albumContentLoader } from '../../utilities';
+import { useNavigate } from 'react-router-dom';
 
 
 function NewEntry({addEntry}) {
@@ -14,7 +15,7 @@ function NewEntry({addEntry}) {
     const [caption, setCaption] = useState("");
     const {album_name}=useParams();
     const {child_name}=useParams();
-
+    const navigate=useNavigate();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -35,7 +36,7 @@ function NewEntry({addEntry}) {
             setImage(null);
             setCaption('');
             props.addEntry(entry); // Call the addEntry function with the new entry
-            handleClose();
+            navigate(`/${child_name}/${album_name}/`)
             
     }
   return (

@@ -400,7 +400,7 @@
   object-fit: cover;
 }
 
-.single_entry {
+.single_entry:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   transform: scale(1.2);

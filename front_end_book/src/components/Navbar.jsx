@@ -38,10 +38,10 @@ export default function Navbar(){
                     navigate('/')]
                 }
                     >LOG OUT</button>
-                <form onSubmit={seachHandler}>
+                {/* <form onSubmit={seachHandler}>
                     <input type="text" value={searchKey} onChange={e=>setSearchKey(e.target.value)} placeholder="Search" />
                     <button className='nav-button' type='submit'>SEARCH</button>
-                </form>
+                </form> */}
             </div>
             </>
             

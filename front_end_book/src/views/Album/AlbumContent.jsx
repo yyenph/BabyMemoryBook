@@ -8,6 +8,7 @@ export default function AlbumContent({entry}){
     const {album_name}=useParams();
     const navigate = useNavigate();
 
+
 // use then catch to navigate after deleteEntry is called successfully
     const handleDelete= ()=> {
         deleteEntry(child_name,album_name,entry_title)

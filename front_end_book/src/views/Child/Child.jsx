@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import ChildContent from "./ChildContent";
 import { getChildList } from "../../utilities";
-import './Childstyle.css'
+
 import AddChild2 from "./AddChild2";
 
 
