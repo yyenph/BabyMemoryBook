@@ -3,11 +3,9 @@ import { createContext, useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import './App.css'
 import { Outlet,useNavigate } from 'react-router-dom';
-import { currUser,submitNameHandler,submitLyricsHandler } from './utilities';
+import { currUser,submitNameHandler, } from './utilities';
 import { getToken } from "./components/CsrfToken";
-import NameIdea from './components/NameIdea';
 import Select from 'react-select';
-import axios from "axios";
 export const UserContext=createContext();
 
 const Gender= [
@@ -19,10 +17,8 @@ const Gender= [
 function App() {
   const [user,setUser]=useState(null);
   getToken();
-  const [childrenList,setChildrenList]=useState();
   const [gender,setGender]=useState('');
   const [nameList,setNameList]=useState([])
-  const [quote,setQuote]=useState('')
   const navigate=useNavigate();
 
 
@@ -32,10 +28,7 @@ function App() {
     };
     getCurrUser();
   },[])
-// namefinder api 
-  useEffect(()=>{
 
-  })
 
   return (
     <div className="App">
@@ -62,27 +55,9 @@ function App() {
               
           </form>
         </div>
-        <div className='quote-card'>
-        
-        <form className='quote-form'  onSubmit={(e)=>{
-            e.preventDefault();
-            submitLyricsHandler(setQuote);
-      
-          }
-            }>
-            <p className='api-title'>Quote of the day </p>
-            {quote &&(
-            <div className="quote">
-            <p>{quote.text}</p> 
-            <p>{quote.author}</p>
-            </div>
-        )}
-            <input className="button" type="submit" value="Get today quote!" />
-            
-        </form>
+       
       </div>
-      </div>
-      <UserContext.Provider value={{user, setUser,nameList,quote}} >
+      <UserContext.Provider value={{user, setUser,nameList}} >
         <Navbar />
         <Outlet />
       </UserContext.Provider>

@@ -9,7 +9,6 @@ import { getChildList, getAlbumloader,albumContentLoader } from './utilities';
 import Albums from './views/Album/Albums';
 import AlbumCard from './views/Album/AlbumCard';
 import NameIdea from './components/NameIdea';
-import QuoteGenerator from './components/QuoteGenerator';
 
 
 const router= createBrowserRouter([
@@ -20,10 +19,6 @@ const router= createBrowserRouter([
       {
         path: "/namefinder/",
         element: <NameIdea />,
-      },
-      {
-        path: "/quotegenerator/",
-        element: <QuoteGenerator />,
       },
       {
         path: "/child/",

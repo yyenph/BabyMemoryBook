@@ -31,7 +31,6 @@ def sign_up(data):
 def log_in(request):
     email = request.data['email']
     password = request.data['password']
-    print(email, password)
     user = authenticate(username = email , password = password)
     if user is not None and user.is_active:
         try:
@@ -40,8 +39,8 @@ def log_in(request):
             return JsonResponse({'email': user.email, 'name':user.name, 'id': user.id})
         except Exception as e:
             print(e)
-            return JsonResponse({'login':False})
-    return JsonResponse({'login':False})
+            return JsonResponse({'Login':False})
+    return JsonResponse({'Login':False})
 
 #get current user and send to backend,can use to get related fields later(like child)
 def curUser(request):

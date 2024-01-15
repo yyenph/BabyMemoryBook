@@ -4,7 +4,7 @@ import { logOut } from '../utilities';
 import SignIn from './SignIn';
 import { UserContext } from '../App';
 export default function Navbar(){
-    const [searchKey,setSearchKey]=useState();
+    // const [searchKey,setSearchKey]=useState();
     const [isSignInVisible,setIsSignInVisible]=useState();
     const {user} = useContext(UserContext)
     const {setUser} = useContext(UserContext);
@@ -23,7 +23,6 @@ export default function Navbar(){
     console.log('user:', user);
     return(
     <nav className='navbar'>
-        
         {user ? (
             <>
             <div className='navbar-left'>

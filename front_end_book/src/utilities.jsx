@@ -16,25 +16,8 @@ export const submitNameHandler = async (gender,setNameList)=>{
     setNameList(response.data);
   
   }
-  //Lyrics finder api
 
-export const submitLyricsHandler = async (setQuote)=>{
-    // e.preventDefault();
-    const response = await axios.get('https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote'
-    ,{
-        params: {
-            token: 'ipworld.info'
-          },
-          headers: {
-            'content-type': 'application/octet-stream',
-            'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-            'X-RapidAPI-Host': 'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com'
-          }
-    });
-   
-    setQuote(response.data);
 
-  }
 // User Authenticate
 export const signUp = async(name, email, password) => {
     let response = await axios.post('/user/users/' , {
@@ -52,8 +35,11 @@ export const logIn = async(email, password, setUser) => {
         'password' : password
     })
     console.log('login',response.data)
-    setUser(response.data)
-    // window.location.reload()
+    if (response.data.email) {
+        setUser(response.data)
+        
+    }
+    else {setUser(null)}
 }
 
 export const currUser = async() =>{
@@ -66,9 +52,8 @@ export const currUser = async() =>{
 
 export const logOut = async(setUser) => {
     let response = await axios.post('/user/users/',{} )
-    setUser(null)
-    
-    
+    setUser(null) 
+    console.log(user)
 }
 
 // Child related_---------------------------------------

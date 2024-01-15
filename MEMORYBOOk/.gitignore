@@ -1,6 +1,49 @@
 .venv
-MMEMORYBOOk/__pycache__
+MEMORYBOOk/__pycache__
 media
 MEMORYBOOk/.env
 book_app/__pycache__
 book_app/migrations
+front_end_book/.DS_Store
+front_end_book/.env
+front_end_book/node_modules/
+node_modules/
+__pycache__/
+*.pyc
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build files
+build/
+dist/
+
+# Editor directories
+.vscode/
+.idea/
+
+# Logs and runtime data
+logs/
+*.log
+npm-debug.log*
+
+# Compiled files
+*.pnp.js
+*.pnp.cjs
+*.pnp.mjs
+
+# Local files
+*.sqlite
+*.sqlite3
+*.bak
+*.ldb
+
+# OS generated files
+.DS_Store
+Thumbs.db
